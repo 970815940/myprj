@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="workflow" extends="json-default" namespace="/workflow">
+			<action name="wc*" class="workflow.CategoryAction" method="{1}">
+					<result name="ajaxsuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="addsuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="updatesuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="deletesuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="findbyidsuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="findbylistsuccess" type="json">
+						<param name="root">tmsg</param>
+					</result>	
+			</action>
+			<action name="fd*" class="workflow.FlowDefinitionAction" method="{1}">
+					<result name="ajaxsuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="addsuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="updatesuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="deletesuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="findbyidsuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="findbylistsuccess" type="json">
+						<param name="root">tmsg</param>
+					</result>	
+					<result name="uploadsuccess" type="json">
+						<param name="root">tmsg</param>
+					</result>
+					<result name="error" type="json">
+						<param name="root">tmsg</param>
+						<param name="contentType">text/text;charset=utf-8</param>
+					</result>											
+			</action>
+	</package>
+</struts>    

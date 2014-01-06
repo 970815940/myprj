@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns="urn:jbpm.org:jpdl-3.2"  name="t1">
+
+
+	<start-state name="开始">
+		<transition to="状态1"></transition>
+	</start-state>
+
+	<state name="状态1">
+		<transition to="状态2"></transition>
+	</state>
+	<state name="状态2">
+		<transition to="结束"></transition>
+	</state>
+	<end-state name="结束"></end-state>
+
+
+</process-definition>

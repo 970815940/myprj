@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<!-- 定义JBPM 集成Spring配置 -->
+	<bean id="jbpmConfiguration" class="org.springmodules.workflow.jbpm31.LocalJbpmConfigurationFactoryBean">
+		<property name="sessionFactory" ref="SessionFactory"></property>
+		                                     
+		<property name="configuration" value="classpath:jbpm.cfg.xml"></property>
+		<property name="createSchema" value="false"></property>
+	</bean>
+	
+	<bean id="jbpmTemplate" class="org.springmodules.workflow.jbpm31.JbpmTemplate">
+		<property name="jbpmConfiguration" ref="jbpmConfiguration"></property>
+	</bean>
+	
+	<!-- 程序扩展 定义 -->
+	<bean id="workflow.CategoryDAO" class="com.sysps.ps.workflow.dao.impl.SspWfCategoryDAOImpl" parent="com.sps.ps.GeneralHibernateDAO"> 
+	</bean>
+	<bean id="workflow.CategoryService" class="com.sysps.ps.workflow.service.impl.SspWfCategoryServiceImpl">
+		<property name="categoryDAOImpl" ref="workflow.CategoryDAO"></property>
+		<property name="jbpmconfig" ref="jbpmConfiguration"></property>	
+	</bean>
+	<bean id="workflow.CategoryAction" class="com.sysps.ps.workflow.action.SspWfCategoryAction" >
+		<property name="categoryServiceImpl" ref="workflow.CategoryService"></property>
+	</bean>
+	<bean id="woekflow.FlowDefinitionServiceImpl" class="com.sysps.ps.workflow.service.impl.FlowDefinitionServiceImpl">
+		<property name="jbpmConfig" ref="jbpmConfiguration"></property>
+	</bean>
+	<bean id="workflow.FlowDefinitionAction" class="com.sysps.ps.workflow.action.FlowDefinitionAction">
+		<property name="definitionServiceImpl" ref="woekflow.FlowDefinitionServiceImpl"></property>
+	</bean>
+</beans>

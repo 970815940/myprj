@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<!-- 公共业务 -->
+	<!-- 主键管理器 开始 -->
+	<bean id="com.sps.ps.commonbiz.pk.primarykeyDAOImpl" class="com.sps.ps.commonbiz.pk.dao.impl.PrimarykeyDAOImpl" parent="com.sps.ps.GeneralHibernateDAO"></bean>
+	<bean id="com.sps.ps.commonbiz.pk.primarykeyServiceImpl" class="com.sps.ps.commonbiz.pk.service.impl.PrimarykeyServiceImpl">
+		<property name="primarykeyDAOImpl" ref="com.sps.ps.commonbiz.pk.primarykeyDAOImpl"></property>
+	</bean>
+	<bean id="com.sps.ps.commonbiz.pk.generateImpl" class="com.sps.ps.commonbiz.pk.service.impl.GenerateImpl">
+		<property name="primarykeyServiceImpl" ref="com.sps.ps.commonbiz.pk.primarykeyServiceImpl"></property>
+	</bean>
+	<bean id="com.sps.ps.commonbiz.pk.primarykeyAction" class="com.sps.ps.commonbiz.pk.action.PrimarykeyAction">
+		<property name="primarykeyServiceImpl" ref="com.sps.ps.commonbiz.pk.primarykeyServiceImpl"></property>
+	</bean>
+	
+	<!-- 主键管理器 结束 -->
+	
+	
+	<!-- org 开始 -->
+	<bean id="com.sps.ps.commonbiz.org.sysUserDAOImpl" class="com.sps.ps.commonbiz.org.dao.impl.SysUserDAOImpl" parent="com.sps.ps.GeneralHibernateDAO"> 
+	</bean>	
+	<bean id="com.sps.ps.commonbiz.org.sysUserServiceImpl" class="com.sps.ps.commonbiz.org.service.impl.SysUserServiceImpl">
+		<property name="sysUserDAOImpl" ref="com.sps.ps.commonbiz.org.sysUserDAOImpl"></property>
+		<property name="modelRightServiceImpl" ref="com.sps.ps.commonbiz.security.ModelRightServiceImpl"></property>
+		<property name="orgServiceImpl" ref="com.sps.ps.commonbiz.org.sysOrgServiceImpl"></property>
+	</bean>
+	<bean id="com.sps.ps.commonbiz.org.sysUserAction" class="com.sps.ps.commonbiz.org.action.SysUserAction">
+		<property name="sysUserServiceImpl" ref="com.sps.ps.commonbiz.org.sysUserServiceImpl"></property>
+	</bean>
+	
+	<bean id="com.sps.ps.commonbiz.org.sysOrgDAOImpl" class="com.sps.ps.commonbiz.org.dao.impl.SysOrgDAOImpl" parent="com.sps.ps.GeneralHibernateDAO"> 
+	</bean>	
+	<bean id="com.sps.ps.commonbiz.org.sysOrgServiceImpl" class="com.sps.ps.commonbiz.org.service.impl.SysOrgServiceImpl">
+		<property name="sysOrgDAOImpl" ref="com.sps.ps.commonbiz.org.sysOrgDAOImpl"></property>
+		<property name="sysStationServiceImpl" ref="com.sps.ps.commonbiz.org.sysStationServiceImpl"></property>
+		<property name="sysUserServiceImpl" ref="com.sps.ps.commonbiz.org.sysUserServiceImpl"></property>
+	</bean>
+	<bean id="com.sps.ps.commonbiz.org.sysOrgAction" class="com.sps.ps.commonbiz.org.action.SysOrgAction">
+		<property name="sysOrgServiceImpl" ref="com.sps.ps.commonbiz.org.sysOrgServiceImpl"></property>
+	</bean>
+		
+	<bean id="com.sps.ps.commonbiz.org.sysDepartmentDAOImpl" class="com.sps.ps.commonbiz.org.dao.impl.SysDepartmentDAOImpl" parent="com.sps.ps.GeneralHibernateDAO"> 
+	</bean>	
+	<bean id="com.sps.ps.commonbiz.org.sysDepartmentServiceImpl" class="com.sps.ps.commonbiz.org.service.impl.SysDepartmentServiceImpl">
+		<property name="sysDepartmentDAOImpl" ref="com.sps.ps.commonbiz.org.sysDepartmentDAOImpl"></property>
+		<property name="sysOrgServiceImpl" ref="com.sps.ps.commonbiz.org.sysOrgServiceImpl"></property>
+		<property name="modelRightServiceImpl" ref="com.sps.ps.commonbiz.security.ModelRightServiceImpl"></property>
+	</bean>
+	<bean id="com.sps.ps.commonbiz.org.sysDepartmentAction" class="com.sps.ps.commonbiz.org.action.SysDepartmentAction">
+		<property name="sysDepartmentServiceImpl" ref="com.sps.ps.commonbiz.org.sysDepartmentServiceImpl"></property>
+		
+	</bean>	
+
+	<bean id="com.sps.ps.commonbiz.org.sysStationDAOImpl" class="com.sps.ps.commonbiz.org.dao.impl.SysStationDAOImpl" parent="com.sps.ps.GeneralHibernateDAO"> 
+	</bean>	
+	<bean id="com.sps.ps.commonbiz.org.sysStationServiceImpl" class="com.sps.ps.commonbiz.org.service.impl.SysStationServiceImpl">
+		<property name="sysStationDAOImpl" ref="com.sps.ps.commonbiz.org.sysStationDAOImpl"></property>
+		
+	</bean>
+	<bean id="com.sps.ps.commonbiz.org.sysStationAction" class="com.sps.ps.commonbiz.org.action.SysStationAction">
+		<property name="sysStationServiceImpl" ref="com.sps.ps.commonbiz.org.sysStationServiceImpl"></property>
+	</bean>			
+	<!-- org 结束 -->
+	
+	
+	<!-- security 开始 -->
+	<bean id="com.sps.ps.commonbiz.securityUserLoginAction" class="com.sps.ps.commonbiz.security.action.SysUserLoginAction">
+		<property name="sysUserServiceImpl" ref="com.sps.ps.commonbiz.org.sysUserServiceImpl"></property>
+		<property name="sysDepartmentServiceImpl" ref="com.sps.ps.commonbiz.org.sysDepartmentServiceImpl"></property>
+		<property name="sysOrgServiceImpl" ref="com.sps.ps.commonbiz.org.sysOrgServiceImpl"></property>
+		<property name="syStationServiceImpl" ref="com.sps.ps.commonbiz.org.sysStationServiceImpl"></property>
+		<property name="authorizeServiceImpl" ref="com.sps.ps.commonbiz.security.AuthorizeServiceImpl"></property>
+	</bean>
+	<bean  id="com.sps.ps.commonbiz.security.dao.ModelStructDAOImpl" class="com.sps.ps.commonbiz.security.dao.impl.ModelStructDAOImpl" parent="com.sps.ps.GeneralHibernateDAO"></bean>
+	<bean id="com.sps.ps.commonbiz.security.service.ModelStructServiceImpl" class="com.sps.ps.commonbiz.security.service.impl.ModelStructServiceImpl" >
+		<property name="modelStructDAOImpl" ref="com.sps.ps.commonbiz.security.dao.ModelStructDAOImpl"></property>
+		<property name="modelEntityServiceImpl" ref="com.sps.ps.commonbiz.security.service.ModelEntityServiceImpl"></property>
+	</bean>
+	<bean id="com.sps.ps.commonbiz.security.action.ModelStructAction" class="com.sps.ps.commonbiz.security.action.ModelStructAction">
+		<property name="modelStructServiceImpl" ref="com.sps.ps.commonbiz.security.service.ModelStructServiceImpl"></property>
+	</bean>
+	
+	<bean id="com.sps.ps.commonbiz.security.dao.ModelEntityDAOImpl" class="com.sps.ps.commonbiz.security.dao.impl.ModelEntityDAOImpl" parent="com.sps.ps.GeneralHibernateDAO"></bean>
+	<bean id="com.sps.ps.commonbiz.security.service.ModelEntityServiceImpl" class="com.sps.ps.commonbiz.security.service.impl.ModelEntityServiceImpl">
+		<property name="modelEntityDAOImpl" ref="com.sps.ps.commonbiz.security.dao.ModelEntityDAOImpl"></property>
+		<property name="modelRightServiceImpl" ref="com.sps.ps.commonbiz.security.ModelRightServiceImpl"></property>
+	</bean>
+	<bean id="com.sps.ps.commonbiz.security.action.ModelEntityAction" class="com.sps.ps.commonbiz.security.action.ModelEntityAction">
+		<property name="modelEntityServiceImpl" ref="com.sps.ps.commonbiz.security.service.ModelEntityServiceImpl"></property>
+	</bean>
+	
+	<bean id="com.sps.ps.commonbiz.security.ModelRightDAOImpl" class="com.sps.ps.commonbiz.security.dao.impl.ModelRightDAOImpl" parent="com.sps.ps.GeneralHibernateDAO"></bean>
+	<bean id="com.sps.ps.commonbiz.security.ModelRightServiceImpl" class="com.sps.ps.commonbiz.security.service.impl.ModelRightServiceImpl">
+		<property name="modelRightDAOImpl" ref="com.sps.ps.commonbiz.security.ModelRightDAOImpl"></property>
+	</bean>
+	<bean id="com.sps.ps.commonbiz.security.ModelRightAction" class="com.sps.ps.commonbiz.security.action.ModelRightAction">
+		<property name="modelRightServiceImpl" ref="com.sps.ps.commonbiz.security.ModelRightServiceImpl"></property>
+	</bean>
+	
+	<bean id="com.sps.ps.commonbiz.security.AuthorizeServiceImpl" class="com.sps.ps.commonbiz.security.service.impl.AuthorizeServiceImpl">
+		<property name="modelEntityServiceImpl" ref="com.sps.ps.commonbiz.security.service.ModelEntityServiceImpl"></property>
+		<property name="modelStructServiceImpl" ref="com.sps.ps.commonbiz.security.service.ModelStructServiceImpl"></property>
+		<property name="sysOrgServiceImpl" ref="com.sps.ps.commonbiz.org.sysOrgServiceImpl"></property>
+		<property name="modelRightServiceImpl" ref="com.sps.ps.commonbiz.security.ModelRightServiceImpl"></property>
+	</bean>	
+	<bean id="com.sps.ps.commonbiz.security.AuthorizeAction" class="com.sps.ps.commonbiz.security.action.AuthorizeAction">
+		<property name="authorizeServiceImpl" ref="com.sps.ps.commonbiz.security.AuthorizeServiceImpl"></property>
+	</bean>
+	
+	<!-- security 结束 -->
+</beans>

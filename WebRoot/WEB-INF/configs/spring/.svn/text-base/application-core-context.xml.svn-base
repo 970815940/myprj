@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="com.ibm.db2.jcc.DB2Driver">
+		</property>
+		<property name="url" value="jdbc:db2://localhost:50000/sysps"></property>
+		<property name="username" value="db2admin"></property>
+		<property name="password" value="db2admin"></property>
+	</bean>
+	<bean class="org.springframework.web.context.ContextLoaderListener"></bean>
+	<bean id="SessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocations" >
+			<list>
+				<value>/WEB-INF/configs/hibernate/*.cfg.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.DB2Dialect
+				</prop>
+				<prop key="hibernate.show_sql">false</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- 公共dao -->
+	<bean id="com.sps.ps.GeneralHibernateDAO" abstract="true" class="com.sps.ps.core.dao.impl.GeneralHibernateDAOImpl">
+		<property name="sessionFactory" ref="SessionFactory"></property>
+	</bean>
+	<!-- 事务处理 start -->
+	
+	<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="SessionFactory"></property>
+	</bean>
+	<!--  
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="find*" propagation="REQUIRED" read-only="true"/>
+			<tx:method name="get*" propagation="REQUIRED" read-only="true"/>
+			<tx:method name="count*" propagation="REQUIRED" read-only="true"/>
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="change*" propagation="REQUIRED"/>
+			<tx:method name="del*" propagation="REQUIRED"/>
+			<tx:method name="*" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>
+		<aop:pointcut expression="execution(* com.*.service.impl.*.*(..))" id="pointcut"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
+	</aop:config>
+	-->
+	<bean id="TransactionInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager" ref="txManager"></property>
+		<property name="transactionAttributes">
+				<props>
+					<prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+					<prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+					<prop key="count*">PROPAGATION_REQUIRED,readOnly</prop>
+					<prop key="update*">PROPAGATION_REQUIRED</prop>
+					<prop key="save*">PROPAGATION_REQUIRED</prop>
+					<prop key="add*">PROPAGATION_REQUIRED</prop>
+					<prop key="change*">PROPAGATION_REQUIRED</prop>
+					<prop key="del*">PROPAGATION_REQUIRED</prop>
+<!--机构分配 -->		
+					<prop key="assign*">PROPAGATION_REQUIRED</prop>
+<!--对加载组件 放行  --><prop key="getUserForPortlet">PROPAGATION_REQUIRED</prop>
+					<prop key="*">PROPAGATION_REQUIRED,readOnly</prop>
+				</props>
+		</property>
+	</bean>
+	<!-- 自动代理 -->
+	<bean id="autoProxy" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+				<list>
+					<value>*service*</value>
+					<value>*Service*</value>
+				</list>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>TransactionInterceptor</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 事务处理 end -->	
+	<!-- 上下文持有类 -->
+	<bean class="com.sps.ps.core.bean.BeanContextHolders"></bean>
+	<!-- 过滤权限 -->
+	<bean id="ModelEntityFilter" class="com.sps.ps.commonbiz.security.service.impl.ModelEntityFilter">
+		<property name="modelRightServiceImpl" ref="com.sps.ps.commonbiz.security.ModelRightServiceImpl"></property>
+	</bean>
+	</beans>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="finance" extends="json-default" namespace="/finance">
+			<action name="ftp*" class="com.sps.ps.finance.action.FinanceTypeAction" method="{1}">
+					<result name="ajaxsuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="addsuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="updatesuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="deletesuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="findbyidsuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="findbylistsuccess" type="json">
+						<param name="root">tmsg</param>
+					</result>	
+			</action>
+			<action name="fn*" class="com.sps.ps.finance.action.FinanceAction" method="{1}">
+					<result name="ajaxsuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="addsuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="updatesuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="deletesuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="findbyidsuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="findbylistsuccess" type="json">
+						<param name="root">tmsg</param>
+					</result>	
+			</action>			
+	</package>
+</struts>    

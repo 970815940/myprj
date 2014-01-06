@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<!-- 系统基础功能 -->
+	<!-- 首页组件 开始 -->
+
+	
+	<bean id="com.sps.ps.commonbiz.basic.dao.impl.WorkspanceporletDAOImpl" class="com.sps.ps.commonbiz.basic.dao.impl.WorkspanceporletDAOImpl" parent="com.sps.ps.GeneralHibernateDAO">
+	</bean>
+	<bean id="com.sps.ps.commonbiz.basic.service.impl.WorkspanceportletServiceImpl" class="com.sps.ps.commonbiz.basic.service.impl.WorkspanceportletServiceImpl">
+		<property name="workspanceporletDAOImpl" ref="com.sps.ps.commonbiz.basic.dao.impl.WorkspanceporletDAOImpl"></property>
+		<property name="portletServiceImpl" ref="com.sps.ps.commonbiz.basic.service.impl.PortletServiceImpl"></property>
+	</bean>
+	<bean class="com.sps.ps.commonbiz.basic.action.WorkspanceporletAction" id="com.sps.ps.commonbiz.basic.action.WorkspanceporletAction">
+		<property name="workspanceporletServiceImpl" ref="com.sps.ps.commonbiz.basic.service.impl.WorkspanceportletServiceImpl"></property>
+	</bean>
+	
+	
+	<bean id="com.sps.ps.commonbiz.basic.dao.impl.PortletDAOImpl" class="com.sps.ps.commonbiz.basic.dao.impl.PortletDAOImpl" parent="com.sps.ps.GeneralHibernateDAO"></bean>
+	<bean id="com.sps.ps.commonbiz.basic.service.impl.PortletServiceImpl" class="com.sps.ps.commonbiz.basic.service.impl.PortletServiceImpl">
+		<property name="portletDAOImpl" ref="com.sps.ps.commonbiz.basic.dao.impl.PortletDAOImpl"></property>                                              
+		<property name="workspanceportletServiceImpl" ref="com.sps.ps.commonbiz.basic.service.impl.WorkspanceportletServiceImpl"></property>
+	</bean>
+	<bean id="com.sps.ps.commonbiz.basic.action.PortletAction" class="com.sps.ps.commonbiz.basic.action.PortletAction">
+		<property name="portletServiceImpl" ref="com.sps.ps.commonbiz.basic.service.impl.PortletServiceImpl"></property>
+	</bean>		
+	<!-- 首页组件 结束 -->
+</beans>

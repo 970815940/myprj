@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="h1">
+
+
+	<start-state name="开始">
+		<transition to="任务一"></transition>
+	</start-state>
+	<task-node name="任务一">
+		<transition to="任务二"></transition>
+	</task-node>
+	<task-node name="任务二">
+		<transition to="结束"></transition>
+	</task-node>
+	<end-state name="结束"></end-state>
+
+
+</process-definition>

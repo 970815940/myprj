@@ -1,0 +1,82 @@
+
+log4j.rootLogger =DEBUG 
+##, WARN,
+
+log4j.logger.org.apache.commons = WARN
+log4j.logger.org.apache.catalina = WARN
+log4j.logger.org.apache = WARN 
+log4j.logger.org.springframework = WARN
+log4j.logger.org.hibernate = ERROR
+log4j.logger.net.sf.ehcache = WARN
+log4j.logger.org.apache.struts = DEBUG
+log4j.logger.com.sps = DEBUG
+
+## 闂傚倸鍊搁崐鎼佸磹妞嬪海鐭嗗ù锝夋交閼板潡姊洪锟界粔鎾磼閵娧勫枑闁哄啫鐗嗙粻鏍ㄧ箾瀹割喕绨婚幆鐔兼⒑闂堟侗妾抽柛鐘冲哺閺佹捇鎳為妷锔剧▏闂佸疇顬冮崹鍧楀箖閳哄喛鎷烽崷顓炐㈡い銉㈡櫊濮婃椽宕崟闈涘壆缂備浇鍩栧畝绋款嚕婵犳艾鍗抽柕蹇曞█閸炶泛鈹戦悩缁樻锭婵炴潙鍊歌灋闁告劕妯婂﹢銈夋煏閸繄鍑圭紒銊ャ偢閺屾盯濡搁妷锕�浠撮梺缁樹緱閸ｏ絽顕ｆ禒瀣э拷鏍Ψ閵夆晛寮板銈冨灪椤繝寮幘瀵割湒閻庯綆鍋勯敓钘夌埣閺屽秵娼悧鍫嫹閵夈劊浜归柟鐑樻尭娴滃湱绱撴担鍦�掓い銏狅躬閺佹捇鎸婃径瀣淮闂佸搫鐭夌槐鏇熺閿曞倸绀堢憸搴ㄥ礆濞戞鏃堟偐闂堟稐娌柣銏╁灙閿熻姤鍓氶崵鏇㈡煙缂併垹鏋熼柛瀣閺岀喖顢橀悢鐑藉殝闂佸綊顥熼崗姗�鐛崶顒佸亱闁割偅绻�閻㈢粯绻濋悽闈浶㈤柨鏇樺�濆畷顖烆敃閵堝牆小婵犵數濮电喊宥夋偂濞嗘挻鐓曢柟瀛樼懃閿熻姤鐗滈敓鑺ョ啲閹凤拷
+log4j.appender.CONSOLE = org.apache.log4j.ConsoleAppender 
+#log4j.appender.CONSOLE.Threshold = DEBUG 
+log4j.appender.CONSOLE.Target = System.out 
+log4j.appender.CONSOLE.layout = org.apache.log4j.PatternLayout 
+log4j.appender.CONSOLE.layout.ConversionPattern =[framework-%p] %d{ABSOLUTE} %c %m %n
+
+## 闂傚倸鍊搁崐椋庣矆娴ｉ潻鑰块梺顒�绉撮崒銊ф喐閺冨牆绠栨繛宸簻鎯熼梺闈涱檳閸犳岸鏁撻懞銉︾稇闁宠鍨块幃鈺冿拷鍦Т椤モ晠姊洪崫鍕靛剮缂佽埖宀稿濠氬即閵忕娀鍞跺┑鐘绘涧濞村倸螞閸愬樊婀ら柕鍫濈凹缁ㄥジ鏌涢妸銉﹀仴闁绘侗鍣ｅ浠嬵敃閵忕姷浜伴梻浣界毇閸愨晛鏆堥柣搴㈣壘濠�閬嶆晸閸婄噥鐎繛鍙夌墪闇夐柛灞绢嚤閻旂厧鐐婄憸澶愬绩娴犲鐓熼柟閭﹀幗缂嶆垿鏌ｈ箛銉х暤闁哄瞼鍠撻崰濠囧础閻愭澘鏋堟俊銈囧Х閸嬫稓鎹㈠锟介獮鍐煥閸喎娈熼梺闈涳紡閸愩劎顔囬梻鍌氬�烽懗鍫曗�﹂崼銉ュ珘妞ゆ帒鍊搁弸鍫拷骞垮劚椤﹀ジ宕曞Δ浣风箚闁靛牆瀚崗宀�绱掗悩鑽ょ暫闁哄本鐩崺銉╁幢濡わ拷缁犳椽鏌ｆ惔銏㈠暡闁瑰嚖鎷�,闂傚倸鍊搁崐鎼佸磹閻戣姤鍊块柨鏃�鎷濋幏椋庣箔濞戞ɑ鍣介柣顓熺懇閺岀喓锟界數顭堝暩闂佹椿鍘介幑鍥蓟閿濆绠ｉ柨婵嗘－濡棃姊洪崫鍕仴闁稿海鏁诲璇测槈閵忕姈銊╂煥濠靛棙鍣规い顏嶅亰濮婂搫鐣烽崶鈺佺濠殿喖锕ら…鐑藉极閹剧粯瀵犲璺虹灱閺嗘盯姊虹粙鍧楊�楃�规洦鍓涢崣鍛存⒑閹稿孩绀�闁稿﹦顭堟晥闁哄被鍎查悡銉╂煟閺囩偛锟藉湱锟芥熬鎷�
+#log4j.appender.FILE = org.apache.log4j.FileAppender 
+#log4j.appender.FILE.File = c:\\file.log 
+#log4j.appender.FILE.Threshold = FATAL 
+#log4j.appender.FILE.Append = false  
+#log4j.appender.FILE.layout = org.apache.log4j.PatternLayout 
+#log4j.appender.FILE.layout.ConversionPattern = [framework-%5p] %d{ABSOLUTE} %c %m %n
+
+## 闂傚倸鍊搁崐椋庣矆娴ｉ潻鑰块梺顒�绉撮崒銊ф喐閺冨牆绠栨繛宸簻鎯熼梺闈涱檳閸犳岸鏁撻懞銉︾稇闁宠鍨块幃鈺冿拷鍦Т椤モ晠姊洪崫鍕靛剮缂佽埖宀稿濠氬即閵忕娀鍞跺┑鐘绘涧濞村倸螞閸愬樊婀ら柕鍫濈凹缁ㄥジ鏌涢妸銉﹀仴闁绘侗鍣ｅ浠嬧�栭妷銉╁弰妞ゃ垺顨￠弫鎾寸鐎ｎ偄锟借埖銇勮箛鎾跺闁绘挾鍠栭獮鏍箹椤撶偞鐏堥梺鍝勵儐閻╊垰螞娴ｇ懓绶為柟閭﹀幘閸樿棄鈹戦埥鍡楃仯闁告鍥х閻庯綆鍓涘Λ顖涖亜閹捐泛孝濞存粌澧界槐鎺旂磼濡吋鍒涢悗瑙勬穿缁叉儳顕ラ崟顓濇勃閻熸瑱绲介幃鍛攽閿涘嫬浜奸柛濞垮�濆畷銏ｃ亹閹烘垹顦洪梺纭呮彧缁犳垿寮告笟锟介弻鐔煎礈瑜忕敮娑㈡煛閸涱喗鍊愰柡灞诲姂閹倝宕掑☉姗嗕紦 
+#log4j.appender.ROLLING_FILE = org.apache.log4j.RollingFileAppender
+#log4j.appender.ROLLING_FILE.Threshold = ERROR 
+#log4j.appender.ROLLING_FILE.File = ../rolling.log 
+#log4j.appender.ROLLING_FILE.Append = true  
+#log4j.appender.ROLLING_FILE.MaxFileSize = 1024KB 
+#log4j.appender.ROLLING_FILE.MaxBackupIndex = 1  
+#log4j.appender.ROLLING_FILE.layout = org.apache.log4j.PatternLayout
+#log4j.appender.ROLLING_FILE.layout.ConversionPattern = [framework-%5p] %d{ABSOLUTE} %c %m %n 
+
+##闂傚倸鍊搁崐椋庣矆娴ｉ潻鑰块梺顒�绉撮崒銊ф喐閺冨牆绠栨繛宸簻鎯熼梺闈涱檳閸犳岸鏁撻懞銉︾稇闁宠鍨块幃鈺冿拷鍦Т椤モ晠姊洪崫鍕靛剮缂佽埖宀稿濠氬即閵忕娀鍞跺┑鐘绘涧濞村倸螞閸愬樊婀ら柕鍫濈凹缁ㄥジ鏌涢妸銉﹀仴闁绘侗鍣ｅ浠嬵敃閵堝浄绱插┑鐐存綑閸氬骞嗗畝鍕辈闁圭儤顨濋悡鏇㈡煙鏉堝墽鍒扮悮姘辩磽娴ｈ櫣甯涢柣鈺婂灦閻涱喚锟斤綆鍠楅崐鐑芥倵濞戞顏堝礈閻㈠憡鈷掑ù锝囧劋閸わ拷闂佹悶鍨洪悡鈥崇暦閺屻儱钃熼柕澶堝劤閸欙拷濠电姰鍨奸崺鏍礉閺囩姷涓嶅┑鍌氭啞閻撴洟鏌熼弶鑳闁瑰啿閰ｅ畷鐢割敆娴ｈ櫣鐦堢紒鍓у钃辨い顒�瀚伴弻娑氾拷锝堝煐鐎氬綊姊绘担鍛婃儓闁硅櫕鍔欏畷鎴︽偄閸濆嫬鐏婇柣鐘叉处缁佹潙危閸喍绻嗘い鏍ㄧ〒閻鎱ㄦ繝鍌滅Ш妤犵偛绻樺畷銊╁级閹寸偛绁舵俊鐐�栭幐鍫曞礉瀹ュ浄鎷峰鎰佺�柕鍥у瀵噣鏁撻悾宀�鐭堢痪顓炴噷娴滃綊鏌熼悜妯诲碍濞存粌缍婂娲捶椤撶姴绗￠柣銏╁灙閺呯姴顕ｉ幎钘夘澘闁绘﹩鍋呴弬锟介梻浣虹帛閸旀浜稿▎鎰珷婵炴垯鍨洪悡鏇㈡煏婵炲灝鍔ょ紒澶庢閿熷�燁瀮濞叉粍绻涢敓鐣岋拷娈垮枙缁瑩銆佸锟介幃銏ゆ煥鐎ｉ潧鎮戦梻鍌氬�风欢姘焽瑜旈幃褔宕卞鏇熸そ婵¤埖寰勭�ｎ亙绨甸梻浣芥硶閸ｏ箓骞忛敓锟�
+#log4j.appender.DAILY_ROLLING_FILE = org.apache.log4j.DailyRollingFileAppender
+#log4j.appender.DAILY_ROLLING_FILE.Threshold = ERROR 
+#log4j.appender.DAILY_ROLLING_FILE.File = ../rolling.log 
+#log4j.appender.DAILY_ROLLING_FILE.DatePattern = '.'yyyy-MM-dd 
+#log4j.appender.DAILY_ROLLING_FILE.Append = true 
+#log4j.appender.DAILY_ROLLING_FILE.layout = org.apache.log4j.PatternLayout
+#log4j.appender.DAILY_ROLLING_FILE.layout.ConversionPattern = [framework-%5p] %d{ABSOLUTE} %c %m %n
+
+## 闂傚倸鍊搁崐鎼佸磹妞嬪海鐭嗗〒姘炬嫹妤犵偛顧侀弫鎾绘偐閸愯弓鐢婚梻浣瑰濞叉牠宕愰幖浣稿瀭闁稿瞼鍋為悡鏇犳喐鎼淬劊锟藉啫鈹戠�ｎ亞鏌ч梺褰掓？閻掞箓鎮″▎鎾村�垫繛鎴烆仾椤忓棛绠旂憸鏃堝蓟濞戙垹妫橀悹鎭掑壉閿濆惓搴ㄥ炊瑜濋煬顒併亜閵忊剝绀嬮柟顔哄灲瀹曘劍绻濋崟顐ょК缂傚倸鍊搁崐鐑芥嚄閼稿灚鍙忛柣銏㈡暩閻瑩鏌熸潏鍓ф偧濞存粍鐟╁缁樻媴閸涘﹤鏆堥梺鍛婃闂勫嫮绮嬪澶嬫櫜濠㈣泛锕ュΣ顒�鈹戞幊閸婃洟骞婅箛娑樼厱闁圭儤鍨敓鑺ュ笒椤顢楁担瑙勫�烽柣搴㈩問閸ｏ絿绮婚弽顓炶摕婵炴垯鍨洪崑鎰版煣韫囷絽浜炴い锕備憾濮婅櫣锟藉湱濯崵娆撴⒑鐢喚绉�殿噮鍋婇獮妯肩磼濡粯顏熼梻浣芥硶閸ｏ箓骞忛敓锟� 
+#log4j.appender.MAIL = org.apache.log4j.net.SMTPAppender 
+#log4j.appender.MAIL.Threshold = ERROR
+#log4j.appender.MAIL.BufferSize = 10  
+#log4j.appender.MAIL.From = lihong@sysway.cn
+#log4j.appender.MAIL.SMTPHost = 192.9.200.6
+#log4j.appender.MAIL.Subject = Log4J Message 
+#log4j.appender.MAIL.To = lihong@sysway.cn
+#log4j.appender.MAIL.layout = org.apache.log4j.PatternLayout 
+#log4j.appender.MAIL.layout.ConversionPattern = [framework-%5p] %d{ABSOLUTE} %c %m %n  
+
+
+## 闂傚倸鍊搁崐鎼佸磹閻戣姤鍊块柨鏇嫹妞ゎ亗鍨藉畷绋课旈敓浠嬪礄閻樼鎷烽惂鍛婂闂佸憡娲﹂崑鍡浰囧ú顏呯厽閹兼惌鍨崇粔鐢告煕閹惧绠栭柟渚垮姂楠炲酣鎳為妷褍骞楅梻浣虹帛閸旀帡宕￠幎濮愶拷鍌炴偡缁辨椽姊婚崒姘拷鎼佸磹瀹勬噴褰掑炊瑜滃﹢婊堟煏婵炵偓娅嗛柛銈呭閺屻倗绮欑捄銊ょ驳濠电偛鎳愭慨鍨┍婵犲洤围闊洦鏌ㄩ鍫曟⒒娴ｉ涓茬紒韫矙閹ê顬楃捄铏诡唵闂佸憡渚楅崹閬嶅窗閸℃稒鐓曢柡鍥ュ妼娴滄粌鈹戦埄鍐ㄢ枙婵﹦绮幏鍛存嚍閵壯侊拷濠囨⒑闂堚晝绉剁紒鐘虫崌閻涱喛绠涘☉娆愭闂佽法鍣﹂幏锟� 
+#log4j.appender.DATABASE = org.apache.log4j.jdbc.JDBCAppender
+#log4j.appender.DATABASE.Threshold = FATAL
+## mysql driver
+##log4j.appender.DATABASE.URL = jdbc:mysql: // localhost:3306/test  
+##log4j.appender.DATABASE.driver = com.mysql.jdbc.Driver
+## DB2 driver
+#log4j.appender.DATABASE.URL = jdbc:db2://192.9.200.203/sysegov
+#log4j.appender.DATABASE.driver = COM.ibm.db2.jdbc.net.DB2Driver
+#log4j.appender.DATABASE.user = db2admin 
+#log4j.appender.DATABASE.password = db2admin
+#log4j.appender.DATABASE.sql = INSERT INTO Log4J (message) VALUES ('[framework-%5p] %d %c %m') 
+#log4j.appender.DATABASE.layout = org.apache.log4j.PatternLayout 
+
+
+## 闂傚倸鍊搁崐鎼佸磹閻戣姤鍤勯柛顐ｆ礀閸屻劎鎲搁弮鍫澪ラ柛鎰靛枛鍞梺鎸庢⒒閾忓骸锕㈢�ｎ亖鏀介柣妯款嚋瀹搞儵鏌ｅΔ锟介敃顏勭暦閹达箑鐓涢柛娑卞枤閸樹粙姊洪柅娑樺祮婵炰匠鍕珷濞寸厧鐡ㄩ悡鍐磽娴ｈ偂鎴犵矆鐎ｎ喗鐓涢悘鐐插⒔濞插瓨銇勯姀鈩冪濠碘�崇埣瀹曞崬螣闂傚绀坧ender
+#log4j.appender.USERDEFINE  =  net.cybercorlin.util.logger.appender.IMAppender 
+#log4j.appender.USERDEFINE.host  =  mail.cybercorlin.net 
+#log4j.appender.USERDEFINE.username  =  username 
+#log4j.appender.USERDEFINE.password  =  password 
+#log4j.appender.USERDEFINE.recipient  =  corlin@cybercorlin.net
+#log4j.appender.USERDEFINE.layout = org.apache.log4j.PatternLayout 
+#log4j.appender.USERDEFINE.layout.ConversionPattern = [framework-%5p] %d %c %m %n

@@ -1,0 +1,33 @@
+package com.sps.ps.utils.entity;
+/**
+ * 构建树的辅助 实体类
+ * @author Administrator
+ *
+ */
+public class entity {
+	private String id;
+	private String pid;
+	private Object obj;
+	public entity(String id) {
+		this.id = id;
+	}
+	public entity(){}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getPid() {
+		return pid;
+	}
+	public void setPid(String pid) {
+		this.pid = pid;
+	}
+	public Object getObj() {
+		return obj;
+	}
+	public void setObj(Object obj) {
+		this.obj = obj;
+	}
+}

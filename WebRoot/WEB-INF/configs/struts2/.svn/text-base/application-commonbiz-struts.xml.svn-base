@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="commonbiz" extends="json-default" namespace="/commonbiz">
+		<action name="pk*" method="{1}" class="com.sps.ps.commonbiz.pk.primarykeyAction">
+			<result name="ajaxsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="addsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="updatesuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="deletesuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="findbyidsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="findbylistsuccess" type="json">
+				<param name="root">tmsg</param>
+			</result>															
+		</action>
+		<action name="su*" method="{1}" class="com.sps.ps.commonbiz.org.sysUserAction">
+			<result name="ajaxsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="addsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="updatesuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="deletesuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="findbyidsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="findbylistsuccess" type="json">
+				<param name="root">tmsg</param>
+			</result>															
+		</action>
+		<action name="so*" method="{1}" class="com.sps.ps.commonbiz.org.sysOrgAction">
+			<result name="ajaxsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="addsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="updatesuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="deletesuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="findbyidsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="findbylistsuccess" type="json">
+				<param name="root">tmsg</param>
+			</result>	
+			<result name="slist" type="json">
+				<param name="root">slist</param>
+			</result>																		
+		</action>
+		<action name="sd*" method="{1}" class="com.sps.ps.commonbiz.org.sysDepartmentAction">
+			<result name="ajaxsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="addsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="updatesuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="deletesuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="findbyidsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="findbylistsuccess" type="json">
+				<param name="root">tmsg</param>
+			</result>															
+		</action>
+		<!-- 系统岗位管理 -->
+		<action name="ss*" method="{1}" class="com.sps.ps.commonbiz.org.sysStationAction">
+			<result name="ajaxsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="addsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="updatesuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="deletesuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="findbyidsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="findbylistsuccess" type="json">
+				<param name="root">tmsg</param>
+			</result>															
+		</action>	
+		<action name="sla*" method="{1}" class="com.sps.ps.commonbiz.securityUserLoginAction">
+			<result name="ajaxsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="addsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="updatesuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="deletesuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="findbyidsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="findbylistsuccess" type="json">
+				<param name="root">tmsg</param>
+			</result>	
+			<result type="redirect">/index/index.jsp</result>														
+		</action>
+		<action name="ms*" class="com.sps.ps.commonbiz.security.action.ModelStructAction" method="{1}">
+			<result name="ajaxsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="addsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="updatesuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="deletesuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="findbyidsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="findbylistsuccess" type="json">
+				<param name="root">tmsg</param>
+			</result>	
+			<result name="string" type="json">
+				<param name="root">strmsg</param>
+				<!-- 
+				<param name="contentType">text/text;charset=utf-8</param>
+				 -->
+			</result>			
+		</action>	
+		
+		<action name="me*" method="{1}" class="com.sps.ps.commonbiz.security.action.ModelEntityAction">
+			<result name="ajaxsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="addsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="updatesuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="deletesuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="findbyidsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="findbylistsuccess" type="json">
+				<param name="root">tmsg</param>
+			</result>	
+			<result type="redirect">/index/index.jsp</result>														
+		</action>	
+		<!-- 授权控制 -->
+		<action name="ara*" class="com.sps.ps.commonbiz.security.AuthorizeAction" method="{1}">
+			<result name="ajaxsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="addsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="updatesuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="deletesuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="findbyidsuccess" type="json">
+				<param name="root">smsg</param>
+			</result>
+			<result name="findbylistsuccess" type="json">
+				<param name="root">tmsg</param>
+			</result>				
+		</action>								
+	</package>
+</struts>    

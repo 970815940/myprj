@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<mapping  resource="com/sps/ps/commonbiz/pk/entity/Primarykey.hbm.xml"/>
+		<mapping  resource="com/sps/ps/commonbiz/org/entity/SysDepartment.hbm.xml"/>
+		<mapping  resource="com/sps/ps/commonbiz/org/entity/SysStation.hbm.xml"/>
+		<mapping  resource="com/sps/ps/commonbiz/org/entity/SysUser.hbm.xml"/>
+		<mapping  resource="com/sps/ps/commonbiz/org/entity/SysOrg.hbm.xml"/>
+		<mapping  resource="com/sps/ps/commonbiz/security/entity/ModelEntity.hbm.xml"/>
+		<mapping  resource="com/sps/ps/commonbiz/security/entity/ModelRight.hbm.xml"/>
+		<mapping  resource="com/sps/ps/commonbiz/security/entity/ModelStruct.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>

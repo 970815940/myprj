@@ -1,0 +1,59 @@
+var USER_SYLOGIN_URL=Ext.appRootPath+"/commonbiz/slaexitUser.action";
+//系统通用函数
+/***********************提示消息 **********************************************************/
+ var MSG_ICON_INFO = Ext.MessageBox.INFO; //普通消息图片类型
+ var MSG_ICON_WARN = Ext.MessageBox.WARNING ; //警告图片类型
+ var MSG_ICON_ERROR = Ext.MessageBox.ERROR; //错误图片类型
+ var MSG_ICON_QUESTION = Ext.MessageBox.QUESTION ; //询问图片类型
+ 
+ var MSG_BTN_OK = Ext.MessageBox.OK;
+ var MSG_BTN_YESNO = Ext.MessageBox.YESNO;
+ var MSG_BTN_OKCANCEL = Ext.MessageBox.OKCANCEL; 
+ var MSG_BTN_YESNOCANCEL = Ext.MessageBox.YESNOCANCEL;
+ //简单消息提示
+ function _alertAll(message,title, btns, callback,icoType,mode) {
+	 Ext.Msg.show({
+	   title: title || "提示消息" ,
+	   msg: (message==null || "" == message) ? "<div style='width:90px'></div>":message,
+	   buttons: (btns || MSG_BTN_OK),
+	   fn: function(btn,text){if(callback){callback(btn);}},
+	   icon: (icoType || MSG_ICON_INFO),
+	   modal: (mode == undefined || mode == null || mode == true)
+	});
+ } 
+ //简单警告消息框
+ function _info(message){
+	_alertAll(message);
+ }
+ //错误提示框
+ function _error(message){
+ 	_alertAll(message,"提示",null,null,MSG_ICON_ERROR);
+ }
+/*********************************end  提示消息*****************************************************/
+function packURL(url,moduleGuid){
+	var url=url;
+	//if(moduleGuid==null||moduleGuid=="")return url;
+	//url+="?SSP.Authorzation="+moduleGuid+"&"+new Date().getTime();
+	return url;
+}
+function Exit(){
+		Ext.Ajax.request({
+				url:USER_SYLOGIN_URL,
+				//params:{orgGUID:ORGGUID},
+				method:'POST',
+				success:function(response ,options){
+						var str=response.responseText;			
+						var msg=Ext.decode(str);
+						if(msg.success===true){
+							window.location.reload();		
+						}else{
+							top._error(msg.msg);
+						}
+									
+				},
+				failure:function(response ,options){
+					top._error("注销发生服务器内部错误");
+				}
+						
+		});		
+}

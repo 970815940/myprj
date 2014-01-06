@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphics>
+    <graphic label="选择" icon="Select"/>
+	<graphic label="开始" icon="Start"/>
+	<graphic label="状态" icon="State"/>
+	<graphic label="结束" icon="End"/>
+	<graphic label="分支" icon="Fork"/>
+	<graphic label="汇聚" icon="Join"/>
+	<graphic label="决策" icon="Decision"/>
+	<graphic label="自动节点" icon="Node"/>
+	<graphic label="人工任务" icon="Task Node"/>
+	<graphic label="子流程" icon="Process State"/>
+	<graphic label="画线"    icon="Transition"/>
+</graphics>

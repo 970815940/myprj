@@ -1,0 +1,6 @@
+@CHARSET "UTF-8";
+
+#MsgDiv{width: 60%;height: 30px;border: 1px solid #CCCCCC; font-size: 13px;background-color: #CCCCCC;}
+#table{width: 100%;height: 100%;}
+#btn-ok {border: 0px CCCCCC solid;width: 50px;}
+#span-num{font-size: 14px; color: red;}

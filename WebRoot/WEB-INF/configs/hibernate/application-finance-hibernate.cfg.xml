@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<mapping  resource="com/sps/ps/finance/entity/Finance.hbm.xml"/>
+		<mapping  resource="com/sps/ps/finance/entity/FinanceTypepath.hbm.xml"/>
+		<event type="post-insert">
+			<listener class="com.sps.ps.finance.hibernateListeners.InserListeners"/>
+		</event>
+	</session-factory>
+</hibernate-configuration>

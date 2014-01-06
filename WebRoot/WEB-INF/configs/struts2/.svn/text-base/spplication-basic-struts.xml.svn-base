@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="basic" extends="json-default" namespace="/basic">
+			<action name="plt*" class="com.sps.ps.commonbiz.basic.action.PortletAction" method="{1}">
+					<result name="ajaxsuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="addsuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="updatesuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="deletesuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="findbyidsuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="findbylistsuccess" type="json">
+						<param name="root">tmsg</param>
+					</result>	
+			</action>
+			<action name="wsp*" class="com.sps.ps.commonbiz.basic.action.WorkspanceporletAction" method="{1}">
+					<result name="ajaxsuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="addsuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="updatesuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="deletesuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="findbyidsuccess" type="json">
+						<param name="root">smsg</param>
+					</result>
+					<result name="findbylistsuccess" type="json">
+						<param name="root">tmsg</param>
+					</result>	
+			</action>			
+	</package>
+</struts>    

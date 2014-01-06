@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<!-- 财务类型 start -->
+	<bean id="com.sps.ps.finance.dao.Impl.FinanceTypeDAOImpl" class="com.sps.ps.finance.dao.Impl.FinanceTypeDAOImpl" parent="com.sps.ps.GeneralHibernateDAO"></bean>	
+	<bean id="com.sps.ps.finance.service.impl.FinanceTypeServiceImpl" class="com.sps.ps.finance.service.impl.FinanceTypeServiceImpl">
+		<property name="financeTypeDAOImpl" ref="com.sps.ps.finance.dao.Impl.FinanceTypeDAOImpl"></property>
+	</bean>
+	<bean id="com.sps.ps.finance.action.FinanceTypeAction" class="com.sps.ps.finance.action.FinanceTypeAction">
+		<property name="financeTypeServiceImpl" ref="com.sps.ps.finance.service.impl.FinanceTypeServiceImpl"></property>
+	</bean>
+	<!-- 财务类型 end -->
+	<!-- 财务收入支出记录 start -->
+	<bean id="com.sps.ps.finance.dao.Impl.FinanceDAOImpl" class="com.sps.ps.finance.dao.Impl.FinanceDAOImpl" parent="com.sps.ps.GeneralHibernateDAO"></bean>
+	<bean id="com.sps.ps.finance.service.impl.FinanceServiceImpl" class="com.sps.ps.finance.service.impl.FinanceServiceImpl" >
+		<property name="financeDAOImpl" ref="com.sps.ps.finance.dao.Impl.FinanceDAOImpl"></property>
+	</bean>
+	<bean id="com.sps.ps.finance.action.FinanceAction" class="com.sps.ps.finance.action.FinanceAction">
+		<property name="financeServiceImpl" ref="com.sps.ps.finance.service.impl.FinanceServiceImpl"></property>
+	</bean>
+	<!-- 财务收入支出记录 end -->
+</beans>

@@ -1,0 +1,90 @@
+package com.test.grid.action;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.sps.ps.core.web.impl.SysWebCtrlAction;
+import com.sps.ps.utils.entity.TableMsg;
+
+public class gridAction extends SysWebCtrlAction {
+	public String getList1(){
+		List lst=new ArrayList();
+		for (int i = 0; i <10; i++) {
+			stu s=new stu("name"+i,"男"+i,"sex"+i,"height"+i,"like"+i,"color"+i);
+			lst.add(s);
+		}
+		super.tmsg=new TableMsg(true,"",lst,lst.size());
+		return super.FIND_BY_OBJLIST_SUCCESS;
+	}
+	public String getList2(){
+		List lst=new ArrayList();
+		for (int i = 0; i <10; i++) {
+			cl c=new cl("cll1"+i,"cll2"+i,"cll3"+i,"cll4"+i,"cll5"+i,"cll16"+i);
+			lst.add(c);
+		}
+		super.tmsg=new TableMsg(true,"",lst,lst.size());
+		return super.FIND_BY_OBJLIST_SUCCESS;
+	}
+	public void createView(){
+		String type=this.clientProxy.getPar("type","1");
+		System.out.println(type);
+		StringBuffer cm=new StringBuffer("{");
+		StringBuffer fd=new StringBuffer("[");
+		StringBuffer store=new StringBuffer("");
+		if(type.equals("1")){
+			cm.append("\"url\":\"/extdemo/ggetList1.action\",");
+			cm.append("\"cm\":[");
+			cm.append(" {header:'姓名',dataIndex:'name'},");
+			cm.append(" {header:'性别',dataIndex:'sex'},");
+			cm.append(" {header:'年龄',dataIndex:'age'},");
+			cm.append(" {header:'身高',dataIndex:'height'},");
+			cm.append(" {header:'爱好',dataIndex:'like'},");
+			cm.append(" {header:'喜欢的颜色',dataIndex:'color'}");
+			cm.append("],");
+			//cm.append("]");
+			cm.append("\"fd\":[");
+			cm.append("{\"name\":\"name\"},");
+			cm.append("{\"name\":\"sex\"},");
+			cm.append("{\"name\":\"age\"},");
+			cm.append("{\"name\":\"height\"},");
+			cm.append("{\"name\":\"like\"},");
+			cm.append("{\"name\":\"color\"}");
+			cm.append("]");
+			cm.append("}");
+		}else{
+			cm.append("\"url\":\"/extdemo/ggetList2.action\",");
+			cm.append("\"cm\":[");
+			cm.append(" {\"header\":\"班级1\",dataIndex:'cll1'},");
+			cm.append(" {header:'班级2',dataIndex:'cll2'},");
+			cm.append(" {header:'班级3',dataIndex:'cll3'},");
+			cm.append(" {header:'班级4',dataIndex:'cll4'},");
+			cm.append(" {header:'班级5',dataIndex:'cll5'},");
+			cm.append(" {header:'班级6',dataIndex:'cll6'}");
+			cm.append("],");	
+			cm.append("fd:[");
+			cm.append("{\"name\":\"cll1\"},");
+			cm.append("{\"name\":\"cll2\"},");
+			cm.append("{\"name\":\"cll3\"},");
+			cm.append("{\"name\":\"cll4\"},");
+			cm.append("{\"name\":\"cll5\"},");
+			cm.append("{\"name\":\"cll6\"}");
+			cm.append("]");
+			cm.append("}");
+		}
+		try {
+			this.clientProxy.getResponse().setContentType("text/text;charset=utf-8");
+			PrintWriter pw=this.clientProxy.getResponse().getWriter();
+			
+			pw.print(cm.toString());
+			//pw.print(fd.toString());
+			pw.flush();
+			pw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		
+	}
+}

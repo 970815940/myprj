@@ -1,0 +1,86 @@
+package com.sps.ps.commonbiz.actions.filter;
+
+import java.io.IOException;
+
+import javax.security.auth.login.LoginContext;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.sps.ps.commonbiz.security.entity.LoginUser;
+
+/**
+ * 拦截系统资源
+ * @author taoxs
+ *
+ */
+public class LoginUserContextFilter  implements Filter{
+	private String loginpath;
+	public void destroy() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void doFilter(ServletRequest rq, ServletResponse rp ,
+			FilterChain fc) throws IOException, ServletException {
+		HttpServletRequest request=(HttpServletRequest)rq;
+		HttpServletResponse response=(HttpServletResponse)rp;
+		String url=request.getRequestURI();
+		//System.err.println("测试："+url);
+		//String prix=url.substring(url.lastIndexOf("."));
+		
+		if(url.equals("/SysPs/")
+		   || url.contains("login")
+	     ||url.contains("/SysPs/index.jsp")
+		 ||url.contains("/SysPs/index/login.jsp")
+		 ||url.contains("/SysPs/index/loginMsg.jsp")
+		 ||url.contains("jslib")
+		 ||url.contains("skins")
+		 ||url.contains("css")
+		 ||url.equals("/SysPs/index/js/jquery-1.9.1.js")
+		 ||url.equals("/SysPs/index/js/jquery-ui.js")
+		){//对系统硬资源放行
+				fc.doFilter(rq, rp);
+		}else{//判断是否登录
+			HttpSession session = request.getSession(false);
+			if(session==null){
+				System.err.println(url+"地址被拦截");
+				String header = request.getHeader("x-requested-with"); 
+				response.setHeader("Content-Type", "text/html; charset=UTF-8");
+				response.getWriter().write("<script type=\"text/javascript\" charset='utf-8'>window.top.location.replace('"+getLoginPath(request)+"');</script>");
+				response.flushBuffer();	
+				return;
+			}
+			Object obj=session.getAttribute(com.sps.ps.commonbiz.security.entity.LoginContext.LOGIN_SESSION_KEY);
+			//LoginUser user=(LoginUser)obj;
+			//System.out.println(user.getUserName());
+			if(obj==null){
+				System.err.println(url+"地址被拦截");
+				System.out.println("你登录已过期,为了你的安全请你重新登录");
+				String header = request.getHeader("x-requested-with"); 
+				response.setHeader("Content-Type", "text/html; charset=UTF-8");
+				response.getWriter().write("<script type=\"text/javascript\" charset='utf-8'>window.top.location.replace('"+getLoginPath(request)+"');</script>");
+				response.flushBuffer();				
+			}else{
+				fc.doFilter(rq, rp);
+			}
+		}
+		
+	}
+
+	public void init(FilterConfig cfg) throws ServletException {
+		loginpath=cfg.getInitParameter("loginURL");
+		
+	}
+	public String getLoginPath(HttpServletRequest request){
+		String url=request.getContextPath()+this.loginpath+"?login=true";
+		return url;
+	}
+
+}
